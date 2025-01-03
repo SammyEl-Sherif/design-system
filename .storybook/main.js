@@ -1,15 +1,26 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
   stories: [
-    '../stories/**/*.mdx',
-    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../src/**/*.mdx',
+    '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
+  swc: () => ({
+    jsc: {
+      transform: {
+        react: {
+          runtime: 'automatic',
+        },
+      },
+    },
+  }),
   addons: [
+    '@chromatic-com/storybook',
     '@storybook/addon-webpack5-compiler-swc',
     '@storybook/addon-onboarding',
     '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
     '@storybook/addon-interactions',
+    '@storybook/addon-styling-webpack',
     {
       name: '@storybook/preset-scss',
       options: {
@@ -31,5 +42,6 @@ const config = {
     name: '@storybook/react-webpack5',
     options: {},
   },
+  staticDirs: ['./public'],
 };
 export default config;

@@ -176,83 +176,83 @@
           "value": 1.333
         }
       }
-    }
-  },
-  "body": {
-    "lg": {
-      "fontSize": {
-        "attributes": { "category": "size", "type": "font" },
-        "value": 1
+    },
+    "body": {
+      "lg": {
+        "fontSize": {
+          "attributes": { "category": "size", "type": "font" },
+          "value": 1
+        },
+        "lineHeight": {
+          "value": 1.25
+        },
+        "paragraphLineHeight": {
+          "value": 1.875
+        }
       },
-      "lineHeight": {
-        "value": 1.25
+      "md": {
+        "fontSize": {
+          "attributes": { "category": "size", "type": "font" },
+          "value": 0.875
+        },
+        "lineHeight": {
+          "value": 1.286
+        },
+        "paragraphLineHeight": {
+          "value": 1.929
+        }
       },
-      "paragraphLineHeight": {
-        "value": 1.875
+      "sm": {
+        "fontSize": {
+          "attributes": { "category": "size", "type": "font" },
+          "value": 0.75
+        },
+        "lineHeight": {
+          "value": 1.333
+        },
+        "paragraphLineHeight": {
+          "value": 2
+        }
+      },
+      "xs": {
+        "fontSize": {
+          "attributes": { "category": "size", "type": "font" },
+          "value": 0.625
+        },
+        "lineHeight": {
+          "value": 1.2
+        },
+        "paragraphLineHeight": {
+          "value": 1.8
+        }
       }
     },
-    "md": {
-      "fontSize": {
-        "attributes": { "category": "size", "type": "font" },
-        "value": 0.875
+    "button": {
+      "fontWeight": {
+        "default": {
+          "value": 500
+        },
+        "emphasis": {
+          "value": 700
+        }
       },
-      "lineHeight": {
-        "value": 1.286
+      "md": {
+        "fontSize": {
+          "attributes": { "category": "size", "type": "font" },
+          "value": 0.875
+        },
+        "lineHeight": {
+          "value": 1.429
+        }
       },
-      "paragraphLineHeight": {
-        "value": 1.929
-      }
-    },
-    "sm": {
-      "fontSize": {
-        "attributes": { "category": "size", "type": "font" },
-        "value": 0.75
-      },
-      "lineHeight": {
-        "value": 1.333
-      },
-      "paragraphLineHeight": {
-        "value": 2
-      }
-    },
-    "xs": {
-      "fontSize": {
-        "attributes": { "category": "size", "type": "font" },
-        "value": 0.625
-      },
-      "lineHeight": {
-        "value": 1.2
-      },
-      "paragraphLineHeight": {
-        "value": 1.8
-      }
-    }
-  },
-  "button": {
-    "fontWeight": {
-      "default": {
-        "value": 500
-      },
-      "emphasis": {
-        "value": 700
-      }
-    },
-    "md": {
-      "fontSize": {
-        "attributes": { "category": "size", "type": "font" },
-        "value": 0.875
-      },
-      "lineHeight": {
-        "value": 1.429
-      }
-    },
-    "sm": {
-      "fontSize": {
-        "attributes": { "category": "size", "type": "font" },
-        "value": 0.75
-      },
-      "lineHeight": {
-        "value": 1.333
+      "sm": {
+        "fontSize": {
+          "attributes": { "category": "size", "type": "font" },
+          "value": 0.75
+        },
+        "lineHeight": {
+          "value": 1.333
+        }
       }
     }
   },

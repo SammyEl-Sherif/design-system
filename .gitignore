@@ -1,3 +1,34 @@
 node_modules
 
+# logs
+*.log
+npm-debug.log*
 *storybook.log
+
+# IDE
+.vscode/*
+.idea/
+!.vscode/settings.json
+
+# os generated files
+.DS_Store
+
+# build files
+dist/
+storybook-static/
+*.tgz
+
+# caches
+.dccache
+.eslintcache
+.stylelintcache
+
+# ssl
+*.key
+*.csr
+
+# generated files
+src/styles/_design-tokens.scss
+tokens/design-tokens.*
+src/components/Icons/_icons
+src/components/Logos/_logos
