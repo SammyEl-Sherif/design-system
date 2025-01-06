@@ -3,7 +3,7 @@
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import scss from 'react-syntax-highlighter/dist/esm/languages/prism/scss';
 import theme from './theme';
-import './storybook-gloabl.scss';
+import './storybook-global.scss';
 
 SyntaxHighlighter.registerLanguage('scss', scss);
 
