@@ -5,6 +5,7 @@ const config = {
     '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
+
   swc: () => ({
     jsc: {
       transform: {
@@ -14,6 +15,7 @@ const config = {
       },
     },
   }),
+
   addons: [
     '@chromatic-com/storybook',
     '@storybook/addon-webpack5-compiler-swc',
@@ -34,19 +36,27 @@ const config = {
         },
       },
     },
+    '@storybook/addon-mdx-gfm'
   ],
+
   features: {
     storyStoreV7: true,
   },
-  framework: '@storybook/react',
+
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {}
+  },
+
   staticDirs: ['./public'],
+
   core: {
-    builder: 'webpack5',
     options: {
       lazyCompilation: true,
       fsCacne: true,
-    },
+    }
   },
+
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.m?js$/,
@@ -59,8 +69,15 @@ const config = {
     });
     return config;
   },
+
   env: (config) => ({
     ...config,
   }),
+
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
+  }
 };
 export default config;
