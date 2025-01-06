@@ -104,6 +104,10 @@ const prodConfig = {
       targets: [
         {
           dest: 'dist',
+          src: './src/lib-env-wrapper.cjs',
+        },
+        {
+          dest: 'dist',
           src: './tokens/design-tokens.cjs',
         },
         {
