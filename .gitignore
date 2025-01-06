@@ -22,7 +22,7 @@ storybook-static/
 .dccache
 .eslintcache
 .stylelintcache
-.cache
+.cache/*
 
 # ssl
 *.key
