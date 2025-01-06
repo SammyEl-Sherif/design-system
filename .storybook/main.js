@@ -38,10 +38,29 @@ const config = {
   features: {
     storyStoreV7: true,
   },
-  framework: {
-    name: '@storybook/react-webpack5',
-    options: {},
-  },
+  framework: '@storybook/react',
   staticDirs: ['./public'],
+  core: {
+    builder: 'webpack5',
+    options: {
+      lazyCompilation: true,
+      fsCacne: true,
+    },
+  },
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.m?js$/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+        },
+      },
+    });
+    return config;
+  },
+  env: (config) => ({
+    ...config,
+  }),
 };
 export default config;
