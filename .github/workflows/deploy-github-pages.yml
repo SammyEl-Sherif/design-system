@@ -20,10 +20,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Build
-        run: npm run build
-        shell: bash
-
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
-          path: dist # default: dist/storybook
+          path: storybook-static
