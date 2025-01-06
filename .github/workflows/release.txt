@@ -1,0 +1,9 @@
+# 1. Docs
+# a. actions/checkout@v4
+# b. get secrets
+# c. deploy storybook -> npm run chromatic
+# 2. Package
+# a. actions/checkout@v4
+# b. get secrets
+# c. publish npm package using semantic-release
+# d. send notifcation

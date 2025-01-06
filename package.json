@@ -11,7 +11,8 @@
     "build:storybook": "storybook build",
     "transform": "tsx ./tokens/transform.ts",
     "prestart": "npm run transform",
-    "prebuild": "npm run transform"
+    "prebuild": "npm run transform",
+    "chromatic": "chromatic --exit-zero-on-changes --exit-once-uploaded --only-change --auto-accept-changes main"
   },
   "keywords": [],
   "author": {
