@@ -8,7 +8,6 @@
     "start": "storybook dev -p 6006",
     "build": "rollup -c",
     "build-storybook": "storybook build",
-    "build:storybook": "storybook build",
     "transform": "tsx ./tokens/transform.ts",
     "prestart": "npm run transform",
     "prebuild": "npm run transform",
