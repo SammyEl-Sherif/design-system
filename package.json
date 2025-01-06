@@ -14,7 +14,9 @@
     "prebuild": "npm run transform"
   },
   "keywords": [],
-  "author": "Sammy El-Sherif",
+  "author": {
+    "name": "Sammy El-Sherif"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.26.0",
