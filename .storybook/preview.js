@@ -1,5 +1,3 @@
-/** @type { import('@storybook/react').Preview } */
-
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import scss from 'react-syntax-highlighter/dist/esm/languages/prism/scss';
 import theme from './theme';
@@ -11,22 +9,10 @@ export const parameters = {
   viewMode: 'docs',
   docs: {
     theme,
+    source: { excludeDecorators: true, state: 'open' },
   },
   chromatic: { disableSnapshot: true },
   controls: { sort: 'alpha' },
 };
 
-const preview = {
-  parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-  },
-
-  tags: ['autodocs']
-};
-
-export default preview;
+export const tags = ['autodocs'];
