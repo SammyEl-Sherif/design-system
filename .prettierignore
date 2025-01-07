@@ -1,0 +1,11 @@
+.DS_Store
+
+packge-lock.json
+
+dist/
+storybook-static/
+
+src/styles/_design-tokens.scss
+tokens/design-tokens.json
+tokens/**/*.tokens.json
+CHANGELOG.md
