@@ -16,7 +16,7 @@
       "buildPath": "./",
       "files": [
         {
-          "destination": "src/styles/_design-tokens.json",
+          "destination": "tokens/design-tokens.json",
           "format": "json/nested"
         }
       ]

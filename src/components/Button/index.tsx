@@ -6,7 +6,7 @@ type ButtonProps = {
   backgroundColor?: string;
   size?: string;
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Button = ({

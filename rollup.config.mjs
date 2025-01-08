@@ -26,12 +26,10 @@ const basePlugins = [
   json(),
   babel({
     babelHelpers: 'bundled',
-    exclude: 'node_modules/**',
+    presets: ['@babel/preset-env'],
   }),
 ];
-/**
- * @type {import('rollup').RollupOptions}
- */
+
 const devConfig = {
   external,
   input,
@@ -98,7 +96,17 @@ const prodConfig = {
       ],
     }),
     postcss({ extract: 'styles.css' }),
-    typescript({ declaration: false }),
+    typescript({ declaration: true,
+      declarationDir: path.dirname(pkg.exports['.'].production.import),
+      exclude: [
+        'src/**/*.+(spec|test).ts?(x)',
+        'src/**/*.stories.tsx',
+        '.storybook/**',
+        'docs/**',
+        'tokens/**',
+        "jest.setup.ts",
+      ],
+     }),
     preserveDirectives({ surpressPreserveModulesWarning: true }),
     copy({
       targets: [
