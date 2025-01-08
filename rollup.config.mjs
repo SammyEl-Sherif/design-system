@@ -50,7 +50,7 @@ const devConfig = {
   plugins: basePlugins.concat([
     typescript({ declaration: false }),
     postcss({ extract: 'styles.css' }),
-    preserveDirectives({ surpressPreserveModulesWarning: true }),
+    preserveDirectives({ supressPreserveModulesWarning: true }),
   ]),
   onwarn(warning, warn) {
     if (
@@ -95,7 +95,12 @@ const prodConfig = {
         'tokens/**',
       ],
     }),
-    postcss({ extract: 'styles.css' }),
+    postcss({ 
+      extract: 'styles.css', 
+      modules: {
+        generateScopedName: '[hash:base64:5]'
+      } 
+    }),
     typescript({ declaration: true,
       declarationDir: path.dirname(pkg.exports['.'].production.import),
       exclude: [
@@ -107,7 +112,7 @@ const prodConfig = {
         "jest.setup.ts",
       ],
      }),
-    preserveDirectives({ surpressPreserveModulesWarning: true }),
+    preserveDirectives({ supressPreserveModulesWarning: true }),
     copy({
       targets: [
         {

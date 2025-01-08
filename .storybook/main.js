@@ -15,6 +15,7 @@ const addons = [
       cssLoaderOptions: {
         modules: {
           auto: true,
+          localIdentName: '[local]--[hash:base64:5]',
         },
       },
     },
