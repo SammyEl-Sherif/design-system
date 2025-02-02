@@ -1,0 +1,8 @@
+@use "design-tokens" as *;
+
+$outline-compensation: 2px;
+
+@mixin focus-outline {
+  outline: 1px dotted $color-active-100; // FIX: need 800
+  outline-offset: 1px;
+}

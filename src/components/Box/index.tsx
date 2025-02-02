@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import styles from './Box.module.scss'
 import clsx from 'clsx'
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from "../../polymorhpic-component-types";
@@ -8,6 +8,7 @@ export type SpacingRange =
   | 25
   | 50
   | 75
+  | 100
   | 125
   | 150
   | 200
@@ -112,8 +113,7 @@ function getPropClasses(value: Spacing | Color | undefined, prefix: string) {
 }
 
 
-//SAVE: const Box: BoxComponent = forwardRef(function Box<C extends React.ElementType = "div",>(props: BoxProps<C>, ref?: PolymorphicRef<C>) {
-const Box = forwardRef(<C extends React.ElementType = "div">(props: BoxProps<C>, ref: ForwardedRef<C>) => {
+const Box: BoxComponent = forwardRef(function Box<C extends React.ElementType = "div",>(props: BoxProps<C>, ref?: PolymorphicRef<C>) {
   const {
     margin,
     marginX,

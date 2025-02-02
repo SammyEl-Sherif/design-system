@@ -138,6 +138,10 @@ const prodConfig = {
           dest: 'dist',
           src: './src/styles/_design-tokens.scss',
         },
+        {
+          dest: 'dist',
+          src: './src/styles/_mixins.scss',
+        },
       ],
     }),
   ]),

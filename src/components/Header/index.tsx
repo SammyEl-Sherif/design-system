@@ -1,7 +1,7 @@
 import Button from '../Button';
 import './header.css';
 
-const Header = ({ user, onLogin, onLogout, onCreateAccount }: any) => (
+const Header = ({ user, /* onLogin, */ onLogout, onCreateAccount }: any) => (
   <header>
     <div className='storybook-header'>
       <div>
@@ -35,21 +35,21 @@ const Header = ({ user, onLogin, onLogout, onCreateAccount }: any) => (
               Welcome, <b>{user.name}</b>!
             </span>
             <Button
-              size='small'
+              // size='small'
               onClick={onLogout}
-              label='Log out'
-              primary={true}
-            />
+            // label='Log out'
+            // primary={true}
+            >Test</Button>
           </>
         ) : (
           <>
-            <Button size='small' onClick={onLogin} label='Log in' />
+            {/* <Button size='small' onClick={onLogin} label='Log in' /> */}
             <Button
-              primary
-              size='small'
+              // primary
+              // size='small'
               onClick={onCreateAccount}
-              label='Sign up'
-            />
+            // label='Sign up'
+            >Test2</Button>
           </>
         )}
       </div>
