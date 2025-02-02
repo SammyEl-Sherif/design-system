@@ -1,11 +1,10 @@
-const { parse } = require('@storybook/blocks');
-
 module.exports = {
   root: true,
   env: {
     node: true,
     browser: true,
   },
+  ignorePatterns: ["polymorphic-comonent-types.ts"],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -28,6 +27,7 @@ module.exports = {
       Button: 'button',
       Page: 'article',
       Header: 'header',
+      Box: 'div',
     },
   },
   overrides: [
