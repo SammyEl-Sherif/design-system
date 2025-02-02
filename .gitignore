@@ -33,3 +33,4 @@ src/styles/_design-tokens.scss
 tokens/design-tokens.*
 src/components/Icons/_icons
 src/components/Logos/_logos
+.vscode/settings.json

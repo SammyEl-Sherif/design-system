@@ -8,7 +8,6 @@ import { babel } from '@rollup/plugin-babel';
 import strip from '@rollup/plugin-strip';
 import json from '@rollup/plugin-json';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
-import maxmin from 'maxmin';
 import pkg from './package.json' with { type: 'json' };
 
 const external = [
@@ -118,6 +117,10 @@ const prodConfig = {
         {
           dest: 'dist',
           src: './src/lib-env-wrapper.cjs',
+        },
+        {
+          dest: 'dist',
+          src: './src/styles/fonts.css',
         },
         {
           dest: 'dist',
