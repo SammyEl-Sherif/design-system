@@ -23,7 +23,9 @@ const external = [
 const input = './src/lib.ts';
 
 const basePlugins = [
-  nodeResolve(),
+  nodeResolve({
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+  }),
   commonjs(),
   json(),
   babel({
