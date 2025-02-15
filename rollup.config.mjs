@@ -52,7 +52,7 @@ const devConfig = {
     },
   ],
   plugins: basePlugins.concat([
-    postcss({ extract: 'styles.css' }),
+    postcss({ extract: 'styles.css', use: ['sass'] }),
     preserveDirectives(),
     typescript({
       declaration: true,
@@ -101,6 +101,7 @@ const prodConfig = {
     }),
     postcss({
       extract: 'styles.css',
+      use: ['sass'],
       modules: {
         generateScopedName: '[hash:base64:5]',
       },
