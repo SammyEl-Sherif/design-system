@@ -5,16 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "rollup -c",
-    "build:next": "next build",
     "build:storybook": "storybook build",
-    "transform": "tsx ./tokens/transform.ts && npm run svgr",
+    "prebuild": "tsx ./tokens/transform.ts && npm run svgr",
     "start": "storybook dev -p 6006",
-    "start:next": "next start",
-    "start:next-dev": "next dev",
-    "prebuild": "npm run transform",
     "chromatic": "chromatic --exit-zero-on-changes --exit-once-uploaded --only-change --auto-accept-changes main",
     "commit": "node scripts/commit.js",
-    "clean": "npm cache clean --force && npm install",
     "prepare": "husky",
     "precommit": "npm-run-all precommit:** --print-label",
     "precommit:": "lint-staged",
@@ -33,7 +28,6 @@
   "dependencies": {
     "@fontsource/roboto": "^5.1.1",
     "clsx": "^2.1.1",
-    "next": "14.2.24",
     "tslib": "^2.8.1"
   },
   "devDependencies": {
