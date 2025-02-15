@@ -1,10 +1,13 @@
 .DS_Store
 
+# npm
 packge-lock.json
 
+# builds
 dist/
 storybook-static/
 
+# generated files
 src/styles/_design-tokens.scss
 tokens/design-tokens.json
 tokens/**/*.tokens.json

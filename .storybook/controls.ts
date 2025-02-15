@@ -1,75 +1,69 @@
-import tokens from '../tokens/design-tokens.json'
+import { color, size } from '../tokens/design-tokens.json';
 
-const {color, size } = tokens
-
-export const boolean = () =>{
+export const boolean = () => {
   return {
-    control: "boolean"
-  }
-}
+    control: 'boolean',
+  };
+};
 
-export const text = () =>{
+export const text = () => {
   return {
-    control: "text"
-  }
-}
+    control: 'text',
+  };
+};
 
 export const disable = {
   table: {
-    disable: true
-  }
-}
+    disable: true,
+  },
+};
 
 export const radio = (options: Array<string> | Array<number>) => {
   return {
-    control: "radio",
-    options
-  }
-}
+    control: 'radio',
+    options,
+  };
+};
 
 export const inlineRadio = (options: Array<string> | Array<number>) => {
   return {
-    control: "radio-inline",
-    options
-  }
-}
+    control: 'radio-inline',
+    options,
+  };
+};
 
 export const select = (options: Array<string> | Array<number>) => {
   return {
     control: {
-      type:"select"
+      type: 'select',
     },
-    options
-  }
-}
-
+    options,
+  };
+};
 
 export const colors = {
-  options: Object.entries(color).reduce(
-    (colorTokens, [palleteName, palleteValues]) => {
-      const pallete = Object.keys(palleteValues).map((scale) => {
-        return `${palleteName}-${scale}`
-      })
+  options: Object.entries(color).reduce((colorTokens, [palleteName, palleteValues]) => {
+    const pallete = Object.keys(palleteValues).map((scale) => {
+      return `${palleteName}-${scale}`;
+    });
 
-      return colorTokens.concat(pallete)
-    },
-    [] as Array<string>
-  ),
-  control: "select",
-}
+    return colorTokens.concat(pallete);
+  }, [] as Array<string>),
+  control: 'select',
+};
 
 export const spacing = {
-  options: Object.keys(size).map((value)=>Number(value)),
+  options: Object.keys(size).map((value) => Number(value)),
   control: {
-    type: "select"
-  }
-}
+    type: 'select',
+  },
+};
 
 export const colorArgTypes = {
   backgroundColor: colors,
   borderColor: colors,
   color: colors,
-}
+};
 
 export const marginArgTypes = {
   margin: spacing,
@@ -79,7 +73,7 @@ export const marginArgTypes = {
   marginRight: spacing,
   marginBottom: spacing,
   marginLeft: spacing,
-}
+};
 
 export const paddingArgTypes = {
   padding: spacing,
@@ -89,10 +83,10 @@ export const paddingArgTypes = {
   paddingRight: spacing,
   paddingBottom: spacing,
   paddingLeft: spacing,
-}
+};
 
 export const stylePropsArgTypes = {
   ...colorArgTypes,
   ...marginArgTypes,
   ...paddingArgTypes,
-}
+};

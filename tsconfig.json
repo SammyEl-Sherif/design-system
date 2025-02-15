@@ -1,24 +1,34 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "jsx": "react-jsx",
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    // Target ES6 for better modern JavaScript support (ES5 is outdated)
+    "target": "ES6",
+
+    // JSX support for React
+    "jsx": "preserve",
+
+    // Use ESNext modules for tree-shaking and modern bundlers
+    "module": "ESNext",
+    "moduleResolution": "node",
+
+    // Allow importing JSON files
     "resolveJsonModule": true,
+
+    // Skip type checking of declaration files
     "skipLibCheck": true,
 
-    //output
-    "declaration": false,
-    "noEmit": true,
+    // Output settings
+    "declaration": true, // Enable declaration files for library builds
+    "declarationMap": true, // Include source maps for declaration files (useful in debugging)
+    "noEmit": false, // Allow emitting files for builds (set to true only in specific build configs)
 
-    //Interop
-    "allowJs": false,
+    // Interop settings
+    "allowJs": true, // Keep this false since you're using TypeScript exclusively
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
 
-    //Linter/Type Checking
+    // Linter/Type Checking
     "strict": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -28,7 +38,22 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    // Plugins
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "incremental": true
   },
-  "include": ["./.storybook", "./src", "./tokens"]
+  "include": ["./src"],
+  "exclude": [
+    "node_modules",
+    "tokens/design-tokens.cjs",
+    "tokens/design-tokens.d.ts",
+    "tokens/design-tokens.js",
+    "tokens/transform.ts",
+    "src/lib-env-wrapper.cjs"
+  ]
 }

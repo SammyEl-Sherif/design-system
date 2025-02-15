@@ -1,48 +1,60 @@
+import React from 'react';
 import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react';
+import Button from './index';
 
-import Button from './';
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
-  tags: ['autodocs'],// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
+  args: { onClick: fn() },
   argTypes: {
-    backgroundColor: { control: 'color' },
+    variant: { control: 'select' },
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onClick: fn(), title: 'hello' },
+  tags: ['autodocs'],
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary = {
+export default meta;
+
+type Story = StoryObj<typeof Button>;
+
+export const Variants = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <Button variant="brand-primary">brand-primary</Button>
+      <Button variant="brand-secondary">brand-secondary</Button>
+      <Button variant="default-primary">default-primary</Button>
+      <Button variant="default-secondary">default-secondary</Button>
+    </div>
+  ),
+};
+
+export const Primary: Story = {
   args: {
-    title: 'Button',
-    children: "Hello"
+    children: 'Primary',
+    variant: 'default-primary',
   },
 };
 
-export const Secondary = {
+export const Secondary: Story = {
   args: {
-    label: 'Button',
+    children: 'Secondary',
+    variant: 'default-secondary',
   },
 };
 
-export const Large = {
+export const BrandPrimary: Story = {
   args: {
-    size: 'large',
-    label: 'Button',
+    children: 'Brand Primary',
+    variant: 'brand-primary',
   },
 };
 
-export const Small = {
+export const BrandSecondary: Story = {
   args: {
-    size: 'small',
-    label: 'Button',
+    children: 'Brand Secondary',
+    variant: 'brand-secondary',
   },
 };

@@ -11,8 +11,7 @@ async function build() {
     name: 'content/mediaQuery',
     transitive: true,
     filter: (token) =>
-      token.attributes?.category === 'content' &&
-      token.attributes?.type === 'mediaQuery',
+      token.attributes?.category === 'content' && token.attributes?.type === 'mediaQuery',
     transform: (token) => `'${token.value}'`,
   });
 
@@ -27,9 +26,7 @@ async function build() {
     ...sd.hooks.transforms['size/rem']!,
     type: 'value',
     name: 'size/font/rem',
-    filter: (token) =>
-      token.attributes?.category === 'size' &&
-      token.attributes?.type === 'font',
+    filter: (token) => token.attributes?.category === 'size' && token.attributes?.type === 'font',
   });
 
   sd.registerTransformGroup({

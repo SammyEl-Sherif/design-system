@@ -1,118 +1,98 @@
-import React, { forwardRef } from "react";
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from "../../polymorhpic-component-types";
-import { ColorValue, MarginProps } from "../Box";
-import Text, { ButtonTextVariant } from '../Text'
-import { Breakpoints, mapBreakpointValues } from "../../breakpoints";
+import React, { forwardRef } from 'react';
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicRef,
+} from '../../polymorphic-component-types';
+import { ColorValue, MarginProps } from '../Box';
+import Text from '../Text';
+import { Breakpoints, mapBreakpointValues } from '../../breakpoints';
 import styles from './Button.module.scss';
-import clsx from "clsx";
+import clsx from 'clsx';
 
-type Variant =
-  | "commerce-primary"
-  | "commerce-secondary"
-  | "default-primary"
-  | "default-secondary"
-  | "default-tertiary"
-  | "utility-default"
-  | "utility-small";
-
+type Variant = 'brand-primary' | 'brand-secondary' | 'default-primary' | 'default-secondary';
 
 export interface Props extends MarginProps {
   children: React.ReactNode;
-  variant?: Variant | Breakpoints<Variant>
+  variant?: Variant | Breakpoints<Variant>;
 }
 
-export type ButtonProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<C, Props>
+export type ButtonProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<C, Props>;
 
-type ButtonComponent = <C extends React.ElementType = "button">(
+type ButtonComponent = <C extends React.ElementType = 'button'>(
   props: ButtonProps<C>,
 ) => React.ReactElement<ButtonProps<C>> | null;
 
-
 function getVariantClasses(value?: Variant | Breakpoints<Variant>) {
-  if (typeof value === "string") {
+  if (typeof value === 'string') {
     return styles[`${value}`];
   }
 
-  if (value && typeof value === "object") {
+  if (value && typeof value === 'object') {
     return [
       value.sm && styles[`${value.sm}-sm`],
       value.md && styles[`${value.md}-md`],
       value.lg && styles[`${value.lg}-lg`],
-    ]
+    ];
   }
 
-  return undefined
+  return undefined;
 }
 
-
-const Button: ButtonComponent = forwardRef(function Button<
-  C extends React.ElementType = "button",
->(
-  { as, children, variant = 'commerce-primary', ...rest }: ButtonProps<C>,
+const Button: ButtonComponent = forwardRef(function Button<C extends React.ElementType = 'button'>(
+  { as, children, variant = 'brand-primary', ...rest }: ButtonProps<C>,
   ref?: PolymorphicRef<C>,
 ) {
-  const asComponent: React.ElementType = as || "button";
+  const asComponent: React.ElementType = as || 'button';
 
   const className = clsx(
     rest.className,
     styles.button,
-    getVariantClasses(variant)
-  )
+    styles.inheritfont,
+    getVariantClasses(variant),
+  );
 
-  const backgroundColor = mapBreakpointValues<Variant, ColorValue>(
-    variant,
-    (variant) => {
-      return rest.disabled
-        ? "neutral-200"
-        : variant === "default-primary" || variant === "default-secondary"
-          ? "neutral-800"
-          : variant === "default-tertiary"
-            ? "neutral-white"
-            : variant === "utility-default" || variant === "utility-small"
-              ? "neutral-200" : "urgent-600"
+  const backgroundColor = mapBreakpointValues<Variant, ColorValue>(variant, (variant) => {
+    if (rest.disabled) return 'neutral-200';
+    switch (variant) {
+      case 'default-primary':
+        return 'neutral-black';
+      case 'default-secondary':
+        return 'neutral-white';
+      case 'brand-primary':
+        return 'active-800';
+      case 'brand-secondary':
+        return 'neutral-white';
+      default:
+        return 'neutral-black';
     }
-  )
-  const borderColor = mapBreakpointValues<Variant, ColorValue>(
-    variant,
-    (variant) => {
-      return rest.disabled
-        ? "neutral-200"
-        : variant === "default-primary" || variant === "default-secondary"
-          ? "neutral-800"
-          : variant === "default-tertiary"
-            ? "neutral-white"
-            : variant === "utility-default" || variant === "utility-small"
-              ? "neutral-200" : "urgent-600"
+  });
+  const borderColor = mapBreakpointValues<Variant, ColorValue>(variant, (variant) => {
+    if (rest.disabled) return 'neutral-200';
+    switch (variant) {
+      case 'brand-secondary':
+        return 'active-800';
+      case 'default-primary':
+      case 'default-secondary':
+      case 'brand-primary':
+      default:
+        return 'neutral-black';
     }
-  )
-  const color = mapBreakpointValues<Variant, ColorValue>(
-    variant,
-    (variant) => {
-      return rest.disabled
-        ? "neutral-400"
-        : variant === "commerce-secondary"
-          ? "urgent-600"
-          : variant === "default-secondary"
-            ? "neutral-800"
-            : variant === "utility-default" || variant === "utility-small"
-              ? "active-800" : "neutral-white"
+  });
+  const textColor = mapBreakpointValues<Variant, ColorValue>(variant, (variant) => {
+    if (rest.disabled) return 'neutral-400';
+    switch (variant) {
+      case 'default-primary':
+        return 'neutral-white';
+      case 'default-secondary':
+        return 'neutral-black';
+      case 'brand-primary':
+        return 'neutral-white';
+      case 'brand-secondary':
+        return 'neutral-black';
+      default:
+        return 'neutral-white';
     }
-  )
-
-  const paddingX = mapBreakpointValues<Variant, 100 | 200>(
-    variant,
-    (variant) => {
-      return variant === "utility-small" ? 100 : 200
-    }
-  )
-
-  const textVariant = mapBreakpointValues<Variant, ButtonTextVariant>(
-    variant,
-    (variant) => {
-      return variant === "utility-default" ? "button-md"
-        : variant === "utility-small" ? "button-sm" : "button-md-emphasis"
-    }
-  )
+  });
 
   return (
     <Text
@@ -120,50 +100,15 @@ const Button: ButtonComponent = forwardRef(function Button<
       className={className}
       backgroundColor={backgroundColor}
       borderColor={borderColor}
-      color={color}
-      paddingX={paddingX}
-      variant={textVariant}
+      color={textColor}
+      paddingX={200}
+      variant="button-md-emphasis"
       ref={ref}
-      {...rest}>
+      {...rest}
+    >
       {children}
     </Text>
-  )
-}
-)
+  );
+});
 
 export default Button as typeof Button;
-
-
-
-/* 
-
-type ButtonProps = {
-  primary?: boolean;
-  backgroundColor?: string;
-  size?: string;
-  label: string;
-  onClick?: () => void;
-};
-
-const Button = ({
-  primary = false,
-  backgroundColor,
-  size = 'large',
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? styles.buttonPrimary : styles.buttonSecondary;
-  const sz = size === 'large' ? styles.buttonLarge : styles.buttonSmall
-  return (
-    <button
-      type='button'
-      className={cn(styles.button, mode, sz)}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {label}
-    </button>
-  );
-};
-
-export default Button as typeof Button; */

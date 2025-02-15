@@ -1,4 +1,4 @@
-@use "../../styles" as *;
+@use '../../styles' as *;
 
 .button {
   align-items: center;
@@ -10,33 +10,36 @@
   height: $form-field-height;
   justify-content: center;
   min-width: 104px;
-  font-family: inherit;
-
+  font: inherit;
   text-decoration: none; // as="a" case
 
   &:focus {
     @include focus-outline;
   }
+
   &:hover {
     cursor: pointer;
+
     &:disabled {
       cursor: default;
     }
   }
 }
 
-@mixin commerce-primary {
+@mixin brand-primary {
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    background-color: $color-urgent-900;
-    border-color: $color-urgent-900;
+    background-color: $color-neutral-white;
+    border-color: $color-active-800;
+    color: $color-neutral-black;
   }
 }
-@mixin commerce-secondary {
+
+@mixin brand-secondary {
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    background-color: $color-urgent-900;
-    border-color: $color-urgent-900;
+    background-color: $color-active-800;
+    border-color: $color-neutral-black;
     color: $color-neutral-white;
   }
 }
@@ -44,67 +47,27 @@
 @mixin default-primary {
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    background-color: $color-neutral-black;
+    background-color: $color-neutral-white;
     border-color: $color-neutral-black;
+    color: $color-neutral-black;
   }
 }
+
 @mixin default-secondary {
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
     background-color: $color-neutral-black;
-    border-color: $color-urgent-900;
+    border-color: $color-neutral-black;
     color: $color-neutral-white;
   }
 }
 
-@mixin default-tertiary {
-  &:not(:disabled) {
-    background-color: transparent;
-  }
-
-  &:hover:not(:disabled),
-  &:focus:not(:disabled) {
-    background-color: $color-neutral-100;
-    border-color: $color-neutral-100;
-  }
+.brand-primary {
+  @include brand-primary;
 }
 
-@mixin utility-default {
-  border-color: 1px;
-
-  &:hover:not(:disabled),
-  &:focus:not(:disabled) {
-    background-color: $color-neutral-100;
-    border-color: $color-neutral-100;
-  }
-}
-
-@mixin utility-small {
-  background: linear-gradient(
-    0deg,
-    $color-neutral-100 0%,
-    #{$color-neutral-100}66 100%
-  );
-
-  border-width: 1px;
-  gap: $size-100;
-  height: $size-300;
-  line-height: 1;
-  min-width: initial;
-
-  &:hover:not(:disabled),
-  &:focus:not(:disabled) {
-    background-color: $color-neutral-100;
-    border-color: $color-neutral-100;
-  }
-}
-
-.commerce-primary {
-  @include commerce-primary;
-}
-
-.commerce-secondary {
-  @include commerce-secondary;
+.brand-secondary {
+  @include brand-secondary;
 }
 
 .default-primary {
@@ -115,89 +78,56 @@
   @include default-secondary;
 }
 
-.default-tertiary {
-  @include default-tertiary;
-}
-
-.utility-default {
-  @include utility-default;
-}
-
-.utility-small {
-  @include utility-small;
-}
-
 @include md {
-  .commerce-primary-md{
-    @include commerce-primary;
+  .brand-primary-md {
+    @include brand-primary;
   }
-  .commerce-secondary-md{
-    @include commerce-secondary;
+
+  .brand-secondary-md {
+    @include brand-secondary;
   }
+
   .default-primary-md {
     @include default-primary;
   }
+
   .default-secondary-md {
     @include default-secondary;
   }
-  .default-tertiary-md {
-    @include default-tertiary;
-  }
-  .utility-default-md{
-    @include utility-default;
-  }
-  .utility-small-md{
-    @include utility-default;
-  }
 }
+
 @include lg {
-  .commerce-primary-lg{
-    @include commerce-primary;
+  .brand-primary-lg {
+    @include brand-primary;
   }
-  .commerce-secondary-lg{
-    @include commerce-secondary;
+
+  .brand-secondary-lg {
+    @include brand-secondary;
   }
+
   .default-primary-lg {
     @include default-primary;
   }
+
   .default-secondary-lg {
     @include default-secondary;
   }
-  .default-tertiary-lg {
-    @include default-tertiary;
-  }
-  .utility-default-lg{
-    @include utility-default;
-  }
-  .utility-small-lg{
-    @include utility-default;
-  }
 }
+
 @include sm {
-  .commerce-primary-sm{
-    @include commerce-primary;
+  .brand-primary-sm {
+    @include brand-primary;
   }
-  .commerce-secondary-sm{
-    @include commerce-secondary;
+
+  .brand-secondary-sm {
+    @include brand-secondary;
   }
+
   .default-primary-sm {
     @include default-primary;
   }
+
   .default-secondary-sm {
     @include default-secondary;
   }
-  .default-tertiary-sm {
-    @include default-tertiary;
-  }
-  .utility-default-sm{
-    @include utility-default;
-  }
-  .utility-small-sm{
-    @include utility-default;
-  }
-}
-
-
-.inherit-font {
-  font: inherit;
 }

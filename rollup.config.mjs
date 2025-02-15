@@ -8,11 +8,14 @@ import { babel } from '@rollup/plugin-babel';
 import strip from '@rollup/plugin-strip';
 import json from '@rollup/plugin-json';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
+import replace from '@rollup/plugin-replace';
+import pluginSyntaxFlow from '@babel/plugin-syntax-flow';
 import pkg from './package.json' with { type: 'json' };
 
 const external = [
   ...Object.keys({
     ...pkg.dependencies,
+    ...pkg.peerDependencies,
   }),
   'react/jsx-runtime',
 ];
@@ -20,12 +23,16 @@ const external = [
 const input = './src/lib.ts';
 
 const basePlugins = [
-  nodeResolve(),
+  nodeResolve({
+    extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx'],
+  }),
   commonjs(),
   json(),
   babel({
     babelHelpers: 'bundled',
-    presets: ['@babel/preset-env'],
+    presets: ['@babel/preset-react'],
+    plugins: [pluginSyntaxFlow],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   }),
 ];
 
@@ -47,15 +54,22 @@ const devConfig = {
     },
   ],
   plugins: basePlugins.concat([
-    typescript({ declaration: false }),
+    replace({
+      preventAssignment: false,
+      'process.env.NODE_ENV': '"development"',
+    }),
     postcss({ extract: 'styles.css' }),
-    preserveDirectives({ supressPreserveModulesWarning: true }),
+    preserveDirectives(),
+    typescript({
+      declaration: true,
+      declarationMap: true,
+      declarationDir: path.dirname(pkg.exports['.'].development.import),
+      exclude: ['src/**/*.stories.tsx', '.storybook/**', 'docs/**', 'tokens/**'],
+      tsconfig: './tsconfig.json',
+    }),
   ]),
   onwarn(warning, warn) {
-    if (
-      warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
-      warning.message.includes('use client')
-    ) {
+    if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) {
       return;
     }
     warn(warning);
@@ -86,32 +100,22 @@ const prodConfig = {
     }),
     typescript({
       declaration: true,
+      declarationMap: true,
       declarationDir: path.dirname(pkg.exports['.'].production.import),
-      exclude: [
-        'src/**/*.stories.tsx',
-        '.storybook/**',
-        'docs/**',
-        'tokens/**',
-      ],
+      exclude: ['src/**/*.stories.tsx', '.storybook/**', 'docs/**', 'tokens/**'],
+      tsconfig: './tsconfig.json',
     }),
-    postcss({ 
-      extract: 'styles.css', 
+    postcss({
+      extract: 'styles.css',
       modules: {
-        generateScopedName: '[hash:base64:5]'
-      } 
+        generateScopedName: '[hash:base64:5]',
+      },
     }),
-    typescript({ declaration: true,
-      declarationDir: path.dirname(pkg.exports['.'].production.import),
-      exclude: [
-        'src/**/*.+(spec|test).ts?(x)',
-        'src/**/*.stories.tsx',
-        '.storybook/**',
-        'docs/**',
-        'tokens/**',
-        "jest.setup.ts",
-      ],
-     }),
-    preserveDirectives({ supressPreserveModulesWarning: true }),
+    replace({
+      preventAssignment: false,
+      'process.env.NODE_ENV': '"production"',
+    }),
+    preserveDirectives(),
     copy({
       targets: [
         {
@@ -146,10 +150,7 @@ const prodConfig = {
     }),
   ]),
   onwarn(warning, warn) {
-    if (
-      warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
-      warning.message.includes('use client')
-    ) {
+    if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) {
       return;
     }
     warn(warning);

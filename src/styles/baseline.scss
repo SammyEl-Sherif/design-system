@@ -1,12 +1,12 @@
-@use "design-tokens" as *;
+@use 'design-tokens' as *;
 
 *,
 ::before,
-::after{
+::after {
   box-sizing: border-box;
 }
 
-html{
+html {
   font-size: 100%;
 }
 

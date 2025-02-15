@@ -1,32 +1,30 @@
-// import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react';
+import Box from './index';
 
-import Box from './';
-
-export default {
+const meta: Meta<typeof Box> = {
   title: 'Components/Box',
   component: Box,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { children: "This is a box", backgroundColor: 'red' },
+  args: { children: 'This is a box' },
 };
 
-export const Primary = {
-  args: {
-    label: 'Button Nice',
-  },
-};
+export default meta;
 
-export const Secondary = {
+type Story = StoryObj<typeof Box>;
+
+export const Primary: Story = {
   args: {
-    label: 'Button',
+    children: 'Primary',
+    variant: 'default-primary',
+    backgroundColor: 'active-800',
+    color: 'neutral-white',
+    paddingX: 800,
+    paddingY: 500,
   },
 };

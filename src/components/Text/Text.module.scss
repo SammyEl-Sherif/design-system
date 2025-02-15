@@ -4,11 +4,11 @@
   font-weight: $font-weight-regular;
 }
 
-@mixin font-classes($viewport: ""){
+@mixin font-classes($viewport: '') {
   .#{$viewport}emphasis {
-    font-weight: $font-weight-medium
+    font-weight: $font-weight-medium;
   }
-  
+
   // headline
   .#{$viewport}headline-display {
     font-size: $font-headline-display-font-size;
@@ -26,7 +26,7 @@
     font-size: $font-headline-sm-font-size;
     line-height: $font-headline-sm-line-height;
   }
-  
+
   // body
   .#{$viewport}body-lg {
     font-size: $font-body-lg-font-size;
@@ -44,7 +44,7 @@
     font-size: $font-body-xs-font-size;
     line-height: $font-body-xs-line-height;
   }
-  
+
   // paragraph
   .#{$viewport}body-lg-paragraph {
     font-size: $font-body-lg-font-size;
@@ -68,16 +68,19 @@
     font-size: $font-button-md-font-size;
     line-height: $font-button-md-line-height;
     font-weight: $font-weight-medium;
-  } 
+  }
 }
 
 @include font-classes;
+
 @include lg {
-  @include font-classes("lg-")
+  @include font-classes('lg-');
 }
+
 @include md {
-  @include font-classes("md-")
+  @include font-classes('md-');
 }
+
 @include sm {
-  @include font-classes("sm-")
+  @include font-classes('sm-');
 }
