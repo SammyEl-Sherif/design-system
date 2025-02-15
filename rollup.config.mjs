@@ -8,9 +8,9 @@ import { babel } from '@rollup/plugin-babel';
 import strip from '@rollup/plugin-strip';
 import json from '@rollup/plugin-json';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
-import replace from '@rollup/plugin-replace';
 import pluginSyntaxFlow from '@babel/plugin-syntax-flow';
 import pkg from './package.json' with { type: 'json' };
+import pluginProposalDecorators from '@babel/plugin-proposal-decorators';
 
 const external = [
   ...Object.keys({
@@ -23,16 +23,14 @@ const external = [
 const input = './src/lib.ts';
 
 const basePlugins = [
-  nodeResolve({
-    extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx'],
-  }),
+  nodeResolve(),
   commonjs(),
   json(),
   babel({
     babelHelpers: 'bundled',
     presets: ['@babel/preset-react'],
-    plugins: [pluginSyntaxFlow],
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    plugins: [pluginSyntaxFlow, [pluginProposalDecorators, { decoratorsBeforeExport: true }]],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'], // [!] (plugin preserve-directives) RollupError: Expression expected
   }),
 ];
 
@@ -54,17 +52,13 @@ const devConfig = {
     },
   ],
   plugins: basePlugins.concat([
-    replace({
-      preventAssignment: false,
-      'process.env.NODE_ENV': '"development"',
-    }),
     postcss({ extract: 'styles.css' }),
     preserveDirectives(),
     typescript({
       declaration: true,
       declarationMap: true,
       declarationDir: path.dirname(pkg.exports['.'].development.import),
-      exclude: ['src/**/*.stories.tsx', '.storybook/**', 'docs/**', 'tokens/**'],
+      exclude: ['src/**/*.stories.tsx', '.storybook/**', 'src/docs/**', 'tokens/**'],
       tsconfig: './tsconfig.json',
     }),
   ]),
@@ -96,13 +90,13 @@ const prodConfig = {
   plugins: basePlugins.concat([
     strip({
       include: 'src/**/*.ts?(x)',
-      functions: ['console.*', 'assert.*'],
+      functions: ['console.*', 'printDevConsole', 'usePrintDevConsole', 'assert.*'],
     }),
     typescript({
       declaration: true,
       declarationMap: true,
       declarationDir: path.dirname(pkg.exports['.'].production.import),
-      exclude: ['src/**/*.stories.tsx', '.storybook/**', 'docs/**', 'tokens/**'],
+      exclude: ['src/**/*.stories.tsx', '.storybook/**', 'src/docs/**', 'tokens/**'],
       tsconfig: './tsconfig.json',
     }),
     postcss({
@@ -110,10 +104,6 @@ const prodConfig = {
       modules: {
         generateScopedName: '[hash:base64:5]',
       },
-    }),
-    replace({
-      preventAssignment: false,
-      'process.env.NODE_ENV': '"production"',
     }),
     preserveDirectives(),
     copy({
