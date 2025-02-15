@@ -32,9 +32,8 @@
   "license": "ISC",
   "dependencies": {
     "@fontsource/roboto": "^5.1.1",
-    "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
     "next": "14.2.24",
-    "sass": "^1.83.0",
     "tslib": "^2.8.1"
   },
   "devDependencies": {
@@ -77,7 +76,6 @@
     "@typescript-eslint/parser": "^7.10.0",
     "babel-loader": "^9.2.1",
     "chromatic": "^11.22.0",
-    "clsx": "^2.1.1",
     "concurrently": "^9.1.2",
     "eslint": "^8.4.1",
     "eslint-config-next": "14.2.24",
@@ -101,6 +99,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-sass": "^1.15.2",
+    "sass": "^1.85.0",
     "sass-loader": "^16.0.4",
     "storybook": "^8.5.5",
     "style-dictionary": "^4.3.0",
