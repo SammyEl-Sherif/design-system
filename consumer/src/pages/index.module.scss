@@ -1,0 +1,22 @@
+@use '@workpace/design-system/dist/design-tokens' as wds-tokens;
+@use '@workpace/design-system/dist/mixins' as wds-mixins;
+
+.design-token-test {
+  font-size: wds-tokens.$size-300;
+  color: wds-tokens.$color-active-800;
+}
+
+.mixin-test {
+  display: none;
+}
+
+@include wds-mixins.mq-md-up {
+  .mixin-test {
+    display: block;
+  }
+}
+
+.main {
+  display: flex;
+  margin: wds-tokens.$size-300;
+}
