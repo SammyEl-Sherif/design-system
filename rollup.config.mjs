@@ -32,7 +32,7 @@ const basePlugins = [
     babelHelpers: 'bundled',
     presets: ['@babel/preset-react'],
     plugins: [pluginSyntaxFlow, [pluginProposalDecorators, { decoratorsBeforeExport: true }]],
-    extensions: ['.js', '.jsx', '.ts', '.tsx'], // [!] (plugin preserve-directives) RollupError: Expression expected
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   }),
 ];
 
@@ -54,11 +54,7 @@ const devConfig = {
     },
   ],
   plugins: basePlugins.concat([
-    postcss({
-      extract: false,
-      modules: true,
-      use: ['sass'],
-    }),
+    postcss({ extract: 'styles.css' }),
     preserveDirectives(),
     typescript({
       declaration: true,
@@ -106,8 +102,10 @@ const prodConfig = {
       tsconfig: './tsconfig.json',
     }),
     postcss({
-      extract: false,
-      modules: true,
+      extract: 'styles.css',
+      modules: {
+        generatedScopedName: '[hash:base64:5]',
+      },
       use: ['sass'],
     }),
     preserveDirectives(),
@@ -152,4 +150,4 @@ const prodConfig = {
   },
 };
 
-export default [devConfig, prodConfig];
+export default [devConfig, devConfig];
