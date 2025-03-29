@@ -4,7 +4,7 @@
   "description": "Reusable building blocks",
   "main": "index.js",
   "scripts": {
-    "build": "rollup -c --debug",
+    "build": "rollup -c",
     "build:production": "NODE_ENV=production npm run build",
     "build:storybook": "storybook build",
     "prebuild": "tsx ./tokens/transform.ts && npm run svgr",

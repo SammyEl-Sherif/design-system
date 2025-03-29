@@ -60,6 +60,7 @@ const devConfig = {
       extract: 'styles.css',
       modules: true,
       use: ['sass'],
+      extensions: ['.scss', '.css']
     }),
     preserveDirectives(),
     typescript({
@@ -109,10 +110,9 @@ const prodConfig = {
     }),
     postcss({
       extract: 'styles.css',
-      modules: {
-        generateScopedName: '[hash:base64:5]',
-      },
+      modules: true,
       use: ['sass'],
+      extensions: ['.scss', '.css']
     }),
     preserveDirectives(),
     copy({
