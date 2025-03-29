@@ -26,7 +26,7 @@ const input = './src/lib.ts';
 
 const basePlugins = [
   nodeResolve({
-    extensions: ['.scss', '.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.scss', '.css', '.js', '.jsx', '.ts', '.tsx'],
   }),
   commonjs(),
   json(),
@@ -56,20 +56,9 @@ const devConfig = {
     },
   ],
   plugins: basePlugins.concat([
-    postcss({
-      extract: 'styles.css',
-      modules: true,
-      use: ['sass'],
-      extensions: ['.scss', '.css']
-    }),
+    typescript({ declaration: false }),
+    postcss({ extract: 'styles.css' }),
     preserveDirectives(),
-    typescript({
-      declaration: true,
-      declarationMap: true,
-      declarationDir: path.dirname(pkg.exports['.'].development.import),
-      exclude: ['src/**/*.stories.tsx', '.storybook/**', 'src/docs/**', 'tokens/**'],
-      tsconfig: './tsconfig.json',
-    }),
   ]),
   onwarn(warning, warn) {
     if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) {
@@ -103,16 +92,14 @@ const prodConfig = {
     }),
     typescript({
       declaration: true,
-      declarationMap: true,
       declarationDir: path.dirname(pkg.exports['.'].production.import),
       exclude: ['src/**/*.stories.tsx', '.storybook/**', 'src/docs/**', 'tokens/**'],
-      tsconfig: './tsconfig.json',
     }),
     postcss({
       extract: 'styles.css',
       modules: true,
       use: ['sass'],
-      extensions: ['.scss', '.css']
+      extensions: ['.scss', '.css'],
     }),
     preserveDirectives(),
     copy({

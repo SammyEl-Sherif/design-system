@@ -22,12 +22,7 @@ jobs:
           fetch-depth: 0
       - name: Setup
         uses: ./.github/actions/setup
-      - name: shell script
-        run: |
-          npm run build:production
-      - name: Verify file existence
-        run: ls -l src/components/Button/Button.module.scss
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
           path: storybook-static
-          build_command: npm run build:storybook
+          build_command: npm run build:production && npm run build:storybook
