@@ -154,4 +154,4 @@ const prodConfig = {
   },
 };
 
-export default [devConfig, devConfig];
+export default [devConfig, prodConfig];
