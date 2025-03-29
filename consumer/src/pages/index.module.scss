@@ -18,5 +18,8 @@
 
 .main {
   display: flex;
+  flex-flow: column nowrap;
+  gap: wds-tokens.$size-200;
   margin: wds-tokens.$size-300;
+  width: 20%;
 }

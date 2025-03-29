@@ -6,15 +6,18 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true, // Allow importing JSON files
     "skipLibCheck": true, // Skip type checking of declaration files
+
     // Output settings
     "declaration": true, // Enable declaration files for library builds
     "noEmit": true, // Allow emitting files for builds (set to true only in specific build configs)
+
     // Interop settings
     "allowJs": false, // Keep this false since you're using TypeScript exclusively
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
+
     // Linter/Type Checking
     "strict": true,
     "allowUnreachableCode": false,
@@ -30,9 +33,7 @@
       }
     ],
     "types": ["typescript-plugin-css-modules"],
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "incremental": true
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
-  "include": ["./.storybook", "./src", "./tokens"],
-  "exclude": ["node_modules"]
+  "include": ["./.storybook", "./src", "./tokens"]
 }
