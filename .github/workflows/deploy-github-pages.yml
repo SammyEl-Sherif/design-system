@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/setup
       - name: shell script
         run: |
-          npm run build
+          npm run build:production
       - name: Verify file existence
         run: ls -l src/components/Button/Button.module.scss
       - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
