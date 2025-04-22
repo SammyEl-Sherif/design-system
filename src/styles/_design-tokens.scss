@@ -1,0 +1,204 @@
+
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+$icons-sm: 16px !default;
+$icons-md: 20px !default;
+$icons-lg: 24px !default;
+$breakpoints-xl: 1280px !default;
+$breakpoints-lg: 1024px !default;
+$breakpoints-md: 640px !default;
+$breakpoints-sm: 1px !default;
+$mq-sm-only: 'screen and (max-width: 640px)' !default;
+$mq-md-up: 'screen and (min-width: 640px)' !default;
+$mq-lg-up: 'screen and (min-width: 1024px)' !default;
+$mq-xl-up: 'screen and (min-width: 1280px)' !default;
+$mq-phone-landscape-only: 'screen and (pointer: coarse) and (orientation: landscape) and (max-height: 640px)' !default;
+$size-25: 2px !default;
+$size-50: 4px !default;
+$size-75: 6px !default;
+$size-100: 8px !default;
+$size-125: 10px !default;
+$size-150: 12px !default;
+$size-200: 16px !default;
+$size-250: 20px !default;
+$size-300: 24px !default;
+$size-400: 32px !default;
+$size-500: 40px !default;
+$size-600: 48px !default;
+$size-700: 56px !default;
+$size-800: 64px !default;
+$size-900: 72px !default;
+$font-roboto: roboto !default;
+$font-stack: Roboto, Arial, Helvetica, sans-serif !default;
+$font-weight-default: 400 !default;
+$font-weight-regular: 400 !default;
+$font-weight-emphasis: 500 !default;
+$font-weight-medium: 500 !default;
+$font-weight-bold: 700 !default;
+$font-headline-display-font-size: 1.75rem !default;
+$font-headline-display-line-height: 1.214 !default;
+$font-headline-lg-font-size: 1.5rem !default;
+$font-headline-lg-line-height: 1.25 !default;
+$font-headline-md-font-size: 1.25rem !default;
+$font-headline-md-line-height: 1.3 !default;
+$font-headline-sm-font-size: 1.125rem !default;
+$font-headline-sm-line-height: 1.333 !default;
+$font-body-lg-font-size: 1rem !default;
+$font-body-lg-line-height: 1.25 !default;
+$font-body-lg-paragraph-line-height: 1.875 !default;
+$font-body-md-font-size: 0.875rem !default;
+$font-body-md-line-height: 1.286 !default;
+$font-body-md-paragraph-line-height: 1.929 !default;
+$font-body-sm-font-size: 0.75rem !default;
+$font-body-sm-line-height: 1.333 !default;
+$font-body-sm-paragraph-line-height: 2 !default;
+$font-body-xs-font-size: 0.625rem !default;
+$font-body-xs-line-height: 1.2 !default;
+$font-body-xs-paragraph-line-height: 1.8 !default;
+$font-button-font-weight-default: 500 !default;
+$font-button-font-weight-emphasis: 700 !default;
+$font-button-md-font-size: 0.875rem !default;
+$font-button-md-line-height: 1.429 !default;
+$font-button-sm-font-size: 0.75rem !default;
+$font-button-sm-line-height: 1.333 !default;
+$color-neutral-100: #eeeeee !default;
+$color-neutral-200: #d8d8d8 !default;
+$color-neutral-400: #abb0b6 !default;
+$color-neutral-600: #72777d !default;
+$color-neutral-800: #29333b !default;
+$color-neutral-black: #000000 !default;
+$color-neutral-white: #ffffff !default;
+$color-urgent-600: #c8102e !default;
+$color-urgent-900: #98191a !default;
+$color-moderate-900: #ff731e !default;
+$color-passive-800: #19792f !default;
+$color-active-800: #00739e !default;
+
+$tokens: (
+  'icons': (
+    'sm': $icons-sm,
+    'md': $icons-md,
+    'lg': $icons-lg
+  ),
+  'breakpoints': (
+    'xl': $breakpoints-xl,
+    'lg': $breakpoints-lg,
+    'md': $breakpoints-md,
+    'sm': $breakpoints-sm
+  ),
+  'mq': (
+    'sm-only': $mq-sm-only,
+    'md-up': $mq-md-up,
+    'lg-up': $mq-lg-up,
+    'xl-up': $mq-xl-up,
+    'phone-landscape-only': $mq-phone-landscape-only
+  ),
+  'size': (
+    '25': $size-25,
+    '50': $size-50,
+    '75': $size-75,
+    '100': $size-100,
+    '125': $size-125,
+    '150': $size-150,
+    '200': $size-200,
+    '250': $size-250,
+    '300': $size-300,
+    '400': $size-400,
+    '500': $size-500,
+    '600': $size-600,
+    '700': $size-700,
+    '800': $size-800,
+    '900': $size-900
+  ),
+  'font': (
+    'roboto': $font-roboto,
+    'stack': $font-stack,
+    'weight': (
+      'default': $font-weight-default,
+      'regular': $font-weight-regular,
+      'emphasis': $font-weight-emphasis,
+      'medium': $font-weight-medium,
+      'bold': $font-weight-bold
+    ),
+    'headline': (
+      'display': (
+        'fontSize': $font-headline-display-font-size,
+        'lineHeight': $font-headline-display-line-height
+      ),
+      'lg': (
+        'fontSize': $font-headline-lg-font-size,
+        'lineHeight': $font-headline-lg-line-height
+      ),
+      'md': (
+        'fontSize': $font-headline-md-font-size,
+        'lineHeight': $font-headline-md-line-height
+      ),
+      'sm': (
+        'fontSize': $font-headline-sm-font-size,
+        'lineHeight': $font-headline-sm-line-height
+      )
+    ),
+    'body': (
+      'lg': (
+        'fontSize': $font-body-lg-font-size,
+        'lineHeight': $font-body-lg-line-height,
+        'paragraphLineHeight': $font-body-lg-paragraph-line-height
+      ),
+      'md': (
+        'fontSize': $font-body-md-font-size,
+        'lineHeight': $font-body-md-line-height,
+        'paragraphLineHeight': $font-body-md-paragraph-line-height
+      ),
+      'sm': (
+        'fontSize': $font-body-sm-font-size,
+        'lineHeight': $font-body-sm-line-height,
+        'paragraphLineHeight': $font-body-sm-paragraph-line-height
+      ),
+      'xs': (
+        'fontSize': $font-body-xs-font-size,
+        'lineHeight': $font-body-xs-line-height,
+        'paragraphLineHeight': $font-body-xs-paragraph-line-height
+      )
+    ),
+    'button': (
+      'fontWeight': (
+        'default': $font-button-font-weight-default,
+        'emphasis': $font-button-font-weight-emphasis
+      ),
+      'md': (
+        'fontSize': $font-button-md-font-size,
+        'lineHeight': $font-button-md-line-height
+      ),
+      'sm': (
+        'fontSize': $font-button-sm-font-size,
+        'lineHeight': $font-button-sm-line-height
+      )
+    )
+  ),
+  'color': (
+    'neutral': (
+      '100': $color-neutral-100,
+      '200': $color-neutral-200,
+      '400': $color-neutral-400,
+      '600': $color-neutral-600,
+      '800': $color-neutral-800,
+      'black': $color-neutral-black,
+      'white': $color-neutral-white
+    ),
+    'urgent': (
+      '600': $color-urgent-600,
+      '900': $color-urgent-900
+    ),
+    'moderate': (
+      '900': $color-moderate-900
+    ),
+    'passive': (
+      '800': $color-passive-800
+    ),
+    'active': (
+      '800': $color-active-800
+    )
+  )
+);

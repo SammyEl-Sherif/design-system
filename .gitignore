@@ -30,10 +30,10 @@ storybook-static/
 *.csr
 
 # generated files
-src/styles/_design-tokens.scss
-tokens/design-tokens.*
-src/components/Icons/_icons
-src/components/Logos/_logos
+# src/styles/_design-tokens.scss
+# tokens/design-tokens.*
+# src/components/Icons/_icons
+# src/components/Logos/_logos
 .vscode/settings.json
 
 
