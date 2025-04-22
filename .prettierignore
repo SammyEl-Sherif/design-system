@@ -4,6 +4,7 @@
 packge-lock.json
 
 # builds
+docs/
 dist/
 storybook-static/
 

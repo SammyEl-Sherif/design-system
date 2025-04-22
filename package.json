@@ -7,6 +7,7 @@
     "build": "rollup -c",
     "build:production": "NODE_ENV=production npm run build",
     "build:storybook": "storybook build",
+    "build:pages": "storybook build -o ./docs",
     "prebuild": "tsx ./tokens/transform.ts && npm run svgr",
     "start": "storybook dev -p 6006",
     "chromatic": "chromatic --exit-zero-on-changes --exit-once-uploaded --only-change --auto-accept-changes main",
@@ -118,7 +119,7 @@
   "bugs": {
     "url": "https://github.com/work-pace/design-system/issues"
   },
-  "homepage": "https://github.com/work-pace/design-system#readme",
+  "homepage": "./",
   "files": [
     "dist"
   ],

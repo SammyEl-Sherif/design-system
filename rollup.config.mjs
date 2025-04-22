@@ -12,8 +12,6 @@ import pluginSyntaxFlow from '@babel/plugin-syntax-flow';
 import pkg from './package.json' with { type: 'json' };
 import pluginProposalDecorators from '@babel/plugin-proposal-decorators';
 
-const env = process.env.NODE_ENV || 'production';
-
 const external = [
   ...Object.keys({
     ...pkg.dependencies,
@@ -99,7 +97,6 @@ const prodConfig = {
       extract: 'styles.css',
       modules: true,
       use: ['sass'],
-      extensions: ['.scss', '.css'],
     }),
     preserveDirectives(),
     copy({
@@ -143,4 +140,4 @@ const prodConfig = {
   },
 };
 
-export default env === 'production' ? prodConfig : [devConfig, prodConfig];
+export default [devConfig, prodConfig];
