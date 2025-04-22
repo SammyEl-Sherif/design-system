@@ -1,0 +1,4 @@
+var styles = {"icon-variant-sm":"Icon-module_icon-variant-sm__rOOaA","icon-md-variant-sm":"Icon-module_icon-md-variant-sm__M7Z2p","icon-lg-variant-sm":"Icon-module_icon-lg-variant-sm__zWmbE","icon-sm-variant-sm":"Icon-module_icon-sm-variant-sm__d-IJD","icon-variant-md":"Icon-module_icon-variant-md__h8Nio","icon-md-variant-md":"Icon-module_icon-md-variant-md__axwNo","icon-lg-variant-md":"Icon-module_icon-lg-variant-md__HrXHR","icon-sm-variant-md":"Icon-module_icon-sm-variant-md__bsM2N","icon-variant-lg":"Icon-module_icon-variant-lg__EFKJP","icon-md-variant-lg":"Icon-module_icon-md-variant-lg__xa88r","icon-lg-variant-lg":"Icon-module_icon-lg-variant-lg__ac0VK","icon-sm-variant-lg":"Icon-module_icon-sm-variant-lg__wBkyC","icon":"Icon-module_icon__z3y9t"};
+
+export { styles as default };
+//# sourceMappingURL=Icon.module.scss.js.map

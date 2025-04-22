@@ -14,7 +14,7 @@ npm-debug.log*
 .DS_Store
 
 # build files
-dist/
+# dist/
 storybook-static/
 *.tgz
 
